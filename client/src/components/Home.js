@@ -1,34 +1,36 @@
 import React, { Component } from 'react';
 import {connect } from 'react-redux'
-import { Header, Segment } from 'semantic-ui-react';
+import { Header, Segment, Grid } from 'semantic-ui-react';
 import {getPosts} from '../actions/posts';
-import PostList from './postList.js'
+import PostList from './postList'
+import PostForm from './PostForm'
 
 class Home extends Component {
 
-  componentDidMount(){
-    this.props.dispatch(getPosts())
-  }
+  // const styles = {
+  //   backgroundColor: "#782398",
+  // }
 
-  renderPosts = () => {
-
-    return this.props.posts.map( post => {
-      return(
-        <Segment.Group>
-        <Segment>{post.title}</Segment>
-        <Segment.Group>
-        <Segment>{post.body}</Segment>
-        </Segment.Group>
-        </Segment.Group>
-      );
-    });
-  }
 
   render() {
     return (
       <Segment>
-        <Header as='h1' textAlign='center'>Home Component</Header>
-        {this.renderPosts()}
+        <Header as='h1' textAlign='center'>Welcome to BookFace</Header>
+        <Grid>
+          <Grid.Row>
+            <Grid.Column width={10}>
+              <PostForm/>
+              <PostList/>
+
+            </Grid.Column>
+            <Grid.Column width={6}>
+              <h2>
+                THIS IS GOING TO BE THE FRIENDS LIST!
+              </h2>
+
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </Segment>
     );
   }
