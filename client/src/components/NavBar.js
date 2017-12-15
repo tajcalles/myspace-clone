@@ -15,6 +15,9 @@ class NavBar extends Component {
             name='Logout'
             onClick={() => dispatch(handleLogout(history))}
           />
+        <Link to  ='/friends'>
+          <Menu.Item name="All Friends"/>
+        </Link>
         </Menu.Menu>
       );
     }
@@ -36,6 +39,9 @@ class NavBar extends Component {
         <Menu pointing secondary>
           <Link to='/'>
             <Menu.Item name='home' />
+          </Link>
+          <Link to  ='/friends'>
+            <Menu.Item name="All Friends"/>
           </Link>
           { this.rightNavs() }
         </Menu>
