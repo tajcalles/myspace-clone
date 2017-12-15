@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Segment } from 'semantic-ui-react'
-import {getPosts} from '../actions/posts';
+import { Segment, Button } from 'semantic-ui-react'
+import {getPosts, deletePost} from '../actions/posts';
 
 
 
@@ -14,13 +14,22 @@ class PostList extends React.Component {
   }
 
   render () {
+    debugger
+    const {dispatch, id} = this.props
     return this.props.posts.map( post => {
       return(
-        <Segment.Group>
-        <Segment>{post.title}</Segment>
-        <Segment.Group>
-        <Segment>{post.body}</Segment>
-        </Segment.Group>
+        <Segment.Group key={id}>
+          <Segment>{post.title}</Segment>
+          <Segment.Group>
+            <Segment>{post.body}</Segment>
+          </Segment.Group>
+          <Button
+            color="red"
+            onClick={()=> dispatch(deletePost(this.props.id))}
+            >
+            Delete
+          </Button>
+
         </Segment.Group>
       );
 
