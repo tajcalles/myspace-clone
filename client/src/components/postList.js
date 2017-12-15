@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Segment, Button } from 'semantic-ui-react'
 import {getPosts, deletePost} from '../actions/posts';
+import {Link} from 'react-router-dom'
 
 
 
@@ -22,12 +23,7 @@ class PostList extends React.Component {
           <Segment.Group>
             <Segment>{post.body}</Segment>
           </Segment.Group>
-          <Button
-            color="red"
-            onClick={()=> dispatch(deletePost(this.props.id))}
-            >
-            Delete
-          </Button>
+          <Link to={`/post/${post.id}`}>Blog Info</Link>
 
         </Segment.Group>
       );
