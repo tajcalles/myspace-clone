@@ -14,7 +14,6 @@ class PostList extends React.Component {
   }
 
   render () {
-    debugger
     const {dispatch, id} = this.props
     return this.props.posts.map( post => {
       return(
