@@ -5,5 +5,5 @@ class User < ActiveRecord::Base
           :omniauthable
   include DeviseTokenAuth::Concerns::User
 
-  has_many :posts, dependent: :destroy
+  has_many :posts
 end

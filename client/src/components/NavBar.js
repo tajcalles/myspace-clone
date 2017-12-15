@@ -15,9 +15,6 @@ class NavBar extends Component {
             name='Logout'
             onClick={() => dispatch(handleLogout(history))}
           />
-        <Link to  ='/friends'>
-          <Menu.Item name="All Friends"/>
-        </Link>
         </Menu.Menu>
       );
     }

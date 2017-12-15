@@ -1,32 +1,33 @@
 class Api::PostsController < ApplicationController
-  before_action :find_post, only: [:creat, :delete]
+  before_action :set_post, except: [:index, :create]
   before_action :authenticate_user!
-
   def index
     @posts = current_user.posts
     render json: @posts
   end
-
   def create
     @post = current_user.posts.create(post_params)
     if @post.save
       render json: @post
     else
-      render json: {error: @post.errors.full_messages.join(',')}, status: 422
+      render json: { errors: @post.error.full_messages.join(',') }, status: 422
     end
   end
-
-  def delete
+  def update
+    if @post.update(post_params)
+      render json: @post
+    else
+      render json: { errors: @post.error.full_messages.join(',') }, status: 422
+    end
+  end
+  def destroy
     @post.destroy
   end
-
   private
-    def find_post
-      params.require(:post).permit(:title, :body)
-    end
-
-    def post_params
+    def set_post
       @post = Post.find(params[:id])
     end
-
+    def post_params
+      params.require(:post).permit(:title, :body)
+    end
 end
