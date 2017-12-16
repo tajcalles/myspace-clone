@@ -4,6 +4,8 @@ import { Segment } from 'semantic-ui-react'
 
 
 const FriendPage = (props) => {
+
+
   return (
     <Segment>
       <h1>PICK A FRIEND</h1>
@@ -11,5 +13,6 @@ const FriendPage = (props) => {
     </Segment>
   )
 }
+
 
 export default FriendPage

@@ -9,7 +9,6 @@ class SinglePost extends React.Component {
   componentDidMount = () =>{
     this.props.dispatch(getPosts())
     this.grabSinglePost()
-    debugger
   }
 
   grabSinglePost = () => {
